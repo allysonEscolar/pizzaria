@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+    {% for d in dados %}
+    <div>
+        <div>
+            <h5>{{d.nome}}</h5>
+        <div>
+            <h5>{{d.comentario}}</h5>
+            <p>
+                {% for i in range(1, d.nota+1) %}
+                <img style="width: 90px;" src="../static/estrela.jpg" alt="estrela">
+                {% endfor %}
+            </p>
+        </div>
+    </div>
+</div>
+<hr>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,23 @@
+[
+    {
+    "nome": "João",
+    "nota": 4,
+    "comentario": "Bom atendimento!"
+  }, {
+    "nome": "Maria",
+    "nota": 5,
+    "comentario": "Ótimos produtos e preços!"
+  }, {
+    "nome": "Pedro",
+    "nota": 3,
+    "comentario": "Poderia melhorar o tempo de entrega."
+  }, {
+    "nome": "Ana",
+    "nota": 2,
+    "comentario": "Produtos de baixa qualidade."
+  }, {
+    "nome": "Lucas",
+    "nota": 5,
+    "comentario": "Excelente serviço ao cliente!"
+  }
+]
