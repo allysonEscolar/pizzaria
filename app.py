@@ -1,10 +1,30 @@
-from flask import Flask, render_template, flash, redirect, request, url_for
+from flask import Flask, render_template, flash, redirect, request, url_for # type: ignore
+from database import db
+import os
+from flask_migrate import Migrate # type: ignore
+from diario import Diario
+
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'sua-palavra-secreta'
+# Construção da String de conexão
+username = os.getenv('DB.USERNAME')
+password = os.getenv('DB.PASSWORD')
+host = os.getenv('DB.HOST')
+database = os.getenv('DB.DATABASE')
+
+conexao = app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{username}:{password}@{host}/{database}'
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+
+app.config['SQLALCHEMY_DATABASE_URI'] = conexao
+
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db.init_app(app)
+migrate = Migrate(app, db)
 
 @app.route('/')
 def index():
+    print(conexao)
     return render_template('index.html')
 
 @app.route("/cardapio")
@@ -59,3 +79,10 @@ def cadastro_usuarios():
             flash('Dados cadastrados com sucesso!', 'success')
 
         return redirect(url_for('cadastro_usuarios'))
+
+@app.route('/add_diario')
+def add_diario():
+    d = Diario('Lic001','Desensvolvimento Web')
+    db.session.add(d)
+    db.session.commit()
+    return "Dados Inseridos com Sucesso"
