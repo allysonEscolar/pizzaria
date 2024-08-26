@@ -86,3 +86,44 @@ def add_diario():
     db.session.add(d)
     db.session.commit()
     return "Dados Inseridos com Sucesso"
+
+@app.route("/select_diario_all")
+def select_diario():
+    dados = Diario.query.all()
+    for d in dados:
+        print('ID: '+ str(d.id)+ ', Disciplina: ' +  d.disciplina +', Titulo: '+d.titulo)
+    return 'Dados obtidos com sucesso.'
+
+@app.route("/select_diario/<id>")
+def select_diario_id(id):
+    dados = Diario.query.get(id)
+    
+    if(dados):
+        print('ID: '+ str(dados.id)+ ', Disciplina: ' +  dados.disciplina +', Titulo: '+dados.titulo)
+        return 'Dados obtidos com sucesso.'
+
+    return 'Nenhum dado encontrado com o id: ' + id
+
+@app.route("/update_diario/<id>")
+def update_diario(id):
+    dados = Diario.query.get(id)
+    
+    if(dados):
+        dados.disciplina = "Seguranca da Informação"
+        dados.titulo = "Lic002"
+        db.session.add(dados)
+        db.session.commit()
+        return 'Dados atualizados com Sucesso'
+    
+    return "Nenhum dado encontrado com o id: " + id
+
+@app.route("/delete_diario/<id>")
+def delete_diario(id):
+    dados = Diario.query.get(id)
+    
+    if(dados):
+        db.session.delete(dados)
+        db.session.commit()
+        return 'Dados excluídos com Sucesso'
+    
+    return "Nenhum dado encontrado com o id: " + id
