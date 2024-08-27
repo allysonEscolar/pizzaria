@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+
+<div class="container-fluid p-5 pl-3 ">
+    <form class="form-group" action="{{url_for('diario.create')}}" method="POST">
+        Título: 
+        <input class="form-control" type="text" name="titulo"><br/>
+        Disciplina: 
+        <input class="form-control" type="text" name="disciplina"><br/>
+        <input class="btn btn-primary btn-lg active" type="submit" name="Cadastrar">
+        <input class="btn btn-primary btn-lg active" type="reset" name="Limpar">
+      </form>
+</div>
+
+{% endblock %}

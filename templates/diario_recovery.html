@@ -1,4 +1,27 @@
 {% extends 'base.html' %}
 {% block conteudo %}
-	<h3> Aqui vai aparecer uma tabela com os usuários cadastrados no banco</h3>
+<div class="container p-3">
+	<a href="{{url_for('diario.create')}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" >Novo diário</a>
+</div>
+
+<div class="container p-3">
+	<table class="table table-striped table-responsive-lg border border-secondary">
+		<thead>
+			<th scope="col" class="border border-secondary">Título:</th>
+			<th scope="col" class="border border-secondary" colspan="2">Disciplina:</th>
+		</thead>
+		<tbody>
+
+			{% for d in dados %}
+			<tr>
+				<td scope="row" class="border border-secondary">{{d.titulo}}</td>
+				<td scope="row" class="border border-secondary">{{d.disciplina}}</td>
+				<td> <a href="#" class="border border-secondary btn btn-danger"> Deletar</a> </td>
+			</tr>
+			{% endfor %}
+		</tbody>
+
+	</table>
+</div>
+
 {% endblock %}
