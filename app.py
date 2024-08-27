@@ -1,11 +1,15 @@
 from flask import Flask, render_template, flash, redirect, request, url_for # type: ignore
-from database import db
+from models.database import db
 import os
 from flask_migrate import Migrate # type: ignore
-from diario import Diario
+from models.diario import Diario
+from controllers.diario import bp_diario
 
 
 app = Flask(__name__)
+app.register_blueprint(bp_diario, url_prefix='/diario')
+
+
 # Construção da String de conexão
 username = os.getenv('DB.USERNAME')
 password = os.getenv('DB.PASSWORD')
