@@ -25,6 +25,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = conexao
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
+lm.init_app(app)
 migrate = Migrate(app, db)
 
 @app.route('/')
