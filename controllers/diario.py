@@ -9,10 +9,11 @@ bp_diario = Blueprint("diario", __name__, template_folder='templates')
 def recovery():
     dados = Diario.query.all()
  
-    try:
-        return render_template('diario_recovery.html', dados = dados)
-    except TemplateNotFound:
-        abort(404)
+    # try:
+    #     return render_template('diario_recovery.html', dados = dados)
+    # except TemplateNotFound:
+    #     abort(404)
+    return render_template('diario_recovery.html', dados = dados)
 
 @bp_diario.route('/create', methods=['GET', 'POST'])
 def create():
