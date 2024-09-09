@@ -1,13 +1,14 @@
 from flask import Flask, render_template, flash, redirect, request, url_for # type: ignore
-from models.database import db
+from utils import db, lm
 import os
 from flask_migrate import Migrate # type: ignore
-from models.diario import Diario
+from models import *
 from controllers.diario import bp_diario
 
 
 app = Flask(__name__)
 app.register_blueprint(bp_diario, url_prefix='/diario')
+app.register_blueprint(bp_usuario, url_prefix='/usuario')
 
 
 # Construção da String de conexão

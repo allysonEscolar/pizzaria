@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, flash, Blueprint, abort, url_for
 from jinja2 import TemplateNotFound
-from models.database import db
+from models.utils import db
 from models.diario import Diario
 
 bp_diario = Blueprint("diario", __name__, template_folder='templates')
