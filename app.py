@@ -18,7 +18,7 @@ password = os.getenv('DB.PASSWORD')
 host = os.getenv('DB.HOST')
 database = os.getenv('DB.DATABASE')
 
-conexao = app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{username}:{password}@{host}/integracao_flask_mysql'
+conexao = app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{username}:{password}@{host}/{database}'
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 print(conexao)
 app.config['SQLALCHEMY_DATABASE_URI'] = conexao
