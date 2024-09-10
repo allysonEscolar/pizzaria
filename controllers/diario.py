@@ -1,11 +1,13 @@
 from flask import render_template, request, redirect, flash, Blueprint, abort, url_for
 from jinja2 import TemplateNotFound
-from models.utils import db
+from utils import db
 from models.diario import Diario
+from flask_login import login_required
 
 bp_diario = Blueprint("diario", __name__, template_folder='templates')
 
 @bp_diario.route('/recovery')
+@login_required
 def recovery():
     dados = Diario.query.all()
  

@@ -1,5 +1,5 @@
 # É necessário importar a variável DB
-from models.utils import db
+from utils import db
 
 class Diario(db.Model):
   __tablename__= "diario"

@@ -4,6 +4,7 @@ import os
 from flask_migrate import Migrate # type: ignore
 from models import *
 from controllers.diario import bp_diario
+from controllers.usuario import bp_usuario
 
 
 app = Flask(__name__)
@@ -17,9 +18,9 @@ password = os.getenv('DB.PASSWORD')
 host = os.getenv('DB.HOST')
 database = os.getenv('DB.DATABASE')
 
-conexao = app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{username}:{password}@{host}/{database}'
+conexao = app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{username}:{password}@{host}/integracao_flask_mysql'
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
-
+print(conexao)
 app.config['SQLALCHEMY_DATABASE_URI'] = conexao
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
